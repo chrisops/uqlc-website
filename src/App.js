@@ -7,6 +7,7 @@ import Events from './pages/Events'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
+import Signup from './pages/Signup'
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
           <Route path="/events">
             <Events />
