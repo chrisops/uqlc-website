@@ -1,15 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, } from 'react-router-dom';
+import Nav from './components/Nav'
+import Banner from './components/Banner'
+import Contact from './pages/Contact'
+import Events from './pages/Events'
+import Home from './pages/Home'
+import Profile from './pages/Profile'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+
 
 function App() {
   return (
-    <div style={{ textAlign: 'center' }}>
+    <Router>
+      <div style={{ textAlign: 'center' }}>
       <Nav />
       <Banner />
-      <Router>
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
           <Route path="/events">
             <Events />
@@ -24,8 +36,8 @@ function App() {
             <Home />
           </Route>
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
