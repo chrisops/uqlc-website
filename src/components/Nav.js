@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Nav() {
   return (
-      <nav style={{display:'flex',justifyContent: 'space-between',margin:'0px 30rem'}}>
+      <nav style={{display:'flex',justifyContent: 'space-between',margin:'0px 25%'}}>
         <Link to='/'>Home</Link>
         <Link to='/events'>Events</Link>
         <Link to='/contact'>Contact</Link>

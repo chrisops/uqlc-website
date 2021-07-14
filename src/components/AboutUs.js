@@ -7,7 +7,7 @@ export default function AboutUs() {
   return (
     <>
       <h2>About Us</h2>
-      <p style={{margin: '20px 25rem'}}>{abouttext}</p>
+      <p style={{margin: '20px 25%'}}>{abouttext}</p>
       <img alt='placeholder' src="https://via.placeholder.com/250" />
     </>
   );
