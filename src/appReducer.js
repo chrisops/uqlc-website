@@ -8,6 +8,12 @@ export default function appReducer(currentState, action) {
                 posts: action.newPosts
             }
         }
+        case 'setAbout': {
+            return {
+                ...currentState,
+                about: action.newAbout
+            }
+        }
 
         case "setToken": {
             localStorage.setItem("token", action.data.token)

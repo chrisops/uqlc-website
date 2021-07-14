@@ -17,6 +17,7 @@ function App() {
 
   const [store,dispatch] = useReducer(appReducer, {
     posts: stubs.posts, // temporary stubs for posts
+    about: stubs.about, // temporary stubs for about us text
     userLoggedIn: null,
     token: localStorage.getItem('token')
   })
