@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import env from 'react-dotenv';
+import React, {useState} from 'react';
+// import env from 'react-dotenv'; Disabled ENV for dev - using stubs
 
 export default function Login() {
 
