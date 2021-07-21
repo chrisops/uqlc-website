@@ -12,8 +12,9 @@ export default function Login() {
   async function formSubmit(event) {
 
     event.preventDefault()
-    /*
-    let response = await fetch(`${env.API_URL}/login`,{
+    const user = { email, password }
+    
+    let response = await fetch(`${env.REACT_APP_API_URL}/login`,{
       method: 'POST',
       body: JSON.stringify(creds),
       headers: {
@@ -31,7 +32,7 @@ export default function Login() {
       data.error // contains error
     }
 
-    
+    /*
     TO DO: 
      - add dotenv for dev environment
      - add logic for handling successful login
@@ -42,7 +43,7 @@ export default function Login() {
   return (
     <>
       <h2>Login</h2>
-      <form onSubmit={formSubmit} onChange={formStateUpdate}>
+      <form onSubmit={ } onChange={formStateUpdate}>
         <input type='email' placeholder='Email'></input><br/><br/>
         <input type='password' placeholder='Password'></input><br/><br/>
         <input type='submit' value='Log in' />
