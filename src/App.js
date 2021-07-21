@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, } from 'react-router-dom';
 import appReducer, {context} from './appReducer'
 import Modal from 'react-modal';
 
+
 // Components
 
 import Nav from './components/Nav'
@@ -66,26 +67,7 @@ function App() {
         </Modal>
 
         <Banner />
-          <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/events">
-              <Events />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
+    
         </div>
       </Router>
     </context.Provider>
