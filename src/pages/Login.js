@@ -12,9 +12,8 @@ export default function Login() {
   async function formSubmit(event) {
 
     event.preventDefault()
-    const user = { email, password }
     
-    let response = await fetch(`${env.REACT_APP_API_URL}/login`,{
+    let response = await fetch(`${process.env.API_URL}/login`, {
       method: 'POST',
       body: JSON.stringify(creds),
       headers: {
@@ -29,7 +28,7 @@ export default function Login() {
     }
     else{
       // failed login
-      data.error // contains error
+      console.log(data.error) // contains error
     }
 
     /*
@@ -43,7 +42,7 @@ export default function Login() {
   return (
     <>
       <h2>Login</h2>
-      <form onSubmit={ } onChange={formStateUpdate}>
+      <form onSubmit={formSubmit} onChange={formStateUpdate}>
         <input type='email' placeholder='Email'></input><br/><br/>
         <input type='password' placeholder='Password'></input><br/><br/>
         <input type='submit' value='Log in' />
