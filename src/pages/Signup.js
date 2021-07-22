@@ -13,14 +13,16 @@ export default function Signup() {
     setCreds({...creds, [event.target.id]: event.target.value})
   }
 
-  async function formSubmit(event) {
+  console.log(env)
 
+  async function formSubmit(event) {
+    console.log(env)
     event.preventDefault()
     if (creds.password !== creds.confirm){
       setError('Passwords do not match')
     }
     
-    let response = await fetch(`${env.API_URL}/users/signup`,{
+    let response = await fetch(`${env.API_URL}/users/register`,{
       method: 'POST',
       body: JSON.stringify({email: creds.email, password: creds.password}),
       headers: {
@@ -29,10 +31,14 @@ export default function Signup() {
     })
 
     console.log(response)
+    console.log(response.status)
+    console.log(response.status === 201)
     
     let data = await response.json()
 
-    if (response.status === 200){
+    console.log()
+
+    if (response.status === 201){
       // successful sign up
       setError(`Successfully signed up as ${creds.email}`)
     }
