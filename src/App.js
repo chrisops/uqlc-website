@@ -1,17 +1,17 @@
 import React, {useReducer,useState} from 'react';
-import { BrowserRouter as Router, Switch, Route, } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import appReducer, {context} from './appReducer'
-import Modal from 'react-modal';
+import Modal from 'react-modal'; // not bootstrap modal
 
 
 // Components
 
 import Nav from './components/Nav'
-import Banner from './components/Banner'
-import Contact from './pages/Contact'
-import Events from './pages/Events'
-import Home from './pages/Home'
-import Profile from './pages/Profile'
+// import Banner from './components/Banner'
+// import Contact from './pages/Contact'
+// import Events from './pages/Events'
+// import Home from './pages/Home'
+// import Profile from './pages/Profile'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 
@@ -66,7 +66,7 @@ function App() {
           
         </Modal>
 
-        <Banner />
+        {/* <Banner /> */}
     
         </div>
       </Router>

@@ -37,7 +37,7 @@ window.env = {
   "npm_package_scripts_start": "react-dotenv && react-scripts start",
   "npm_config_ignore_scripts": "",
   "npm_package_browserslist_development_0": "last 1 chrome version",
-  "PATH": "/tmp/yarn--1626832545065-0.6714638415847596:/mnt/c/Users/chrob/Documents/CoderAcademy/Term3/uqlc-website/node_modules/.bin:/home/chris/.config/yarn/link/node_modules/.bin:/home/chris/.yarn/bin:/home/chris/.nvm/versions/node/v15.14.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/home/chris/.nvm/versions/node/v15.14.0/lib/node_modules/npm/bin/node-gyp-bin:/home/chris/.nvm/versions/node/v15.14.0/bin/node_modules/npm/bin/node-gyp-bin:/home/chris/.vscode-server/bin/c3f126316369cd610563c75b1b1725e0679adfb3/bin:/home/chris/.nvm/versions/node/v15.14.0/bin:/home/chris/.rbenv/shims:/home/chris/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files/WindowsApps/CanonicalGroupLimited.Ubuntu18.04onWindows_1804.2020.824.0_x64__79rhkp1fndgsc:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/chrob/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/chrob/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/chrob/.dotnet/tools:/snap/bin",
+  "PATH": "/tmp/yarn--1626843561209-0.8432233027836911:/mnt/c/Users/chrob/Documents/CoderAcademy/Term3/uqlc-website/node_modules/.bin:/home/chris/.config/yarn/link/node_modules/.bin:/home/chris/.yarn/bin:/home/chris/.nvm/versions/node/v15.14.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/home/chris/.nvm/versions/node/v15.14.0/lib/node_modules/npm/bin/node-gyp-bin:/home/chris/.nvm/versions/node/v15.14.0/bin/node_modules/npm/bin/node-gyp-bin:/home/chris/.vscode-server/bin/c3f126316369cd610563c75b1b1725e0679adfb3/bin:/home/chris/.nvm/versions/node/v15.14.0/bin:/home/chris/.rbenv/shims:/home/chris/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files/WindowsApps/CanonicalGroupLimited.Ubuntu18.04onWindows_1804.2020.824.0_x64__79rhkp1fndgsc:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/chrob/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/chrob/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/chrob/.dotnet/tools:/snap/bin",
   "NODE": "/home/chris/.nvm/versions/node/v15.14.0/bin/node",
   "npm_package_browserslist_development_1": "last 1 firefox version",
   "npm_package_name": "uqlc-website",
@@ -75,6 +75,6 @@ window.env = {
   "WSLENV": "ELECTRON_RUN_AS_NODE/w:",
   "npm_package_eslintConfig_extends": "react-app",
   "npm_package_dependencies_react": "^17.0.2",
-  "API_URL": "http://localhost:3000",
+  "API_URL": "http://localhost:4000/api/v1",
   "PORT": "3001"
 };
