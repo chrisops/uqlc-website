@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
+import Alert from 'react-bootstrap/Alert'
+import env from 'react-dotenv'
+import {context} from '../appReducer'
 // import env from 'react-dotenv'; Disabled ENV for dev - using stubs
 
 export default function Login() {
 
   const [creds,setCreds] = useState({email: "",password: ""})
+  const [error,setError] = React.useState('')
+  const { dispatch } = React.useContext(context)
 
   function formStateUpdate(event) {
     setCreds({...creds, [event.target.type]: event.target.value})
@@ -12,9 +17,8 @@ export default function Login() {
   async function formSubmit(event) {
 
     event.preventDefault()
-    const user = { email, password }
     
-    let response = await fetch(`${env.REACT_APP_API_URL}/login`,{
+    let response = await fetch(`${env.API_URL}/users/login`, {
       method: 'POST',
       body: JSON.stringify(creds),
       headers: {
@@ -24,12 +28,19 @@ export default function Login() {
     
     let data = await response.json()
 
-    if (response.state === 200){
+    if (response.status === 200){
       // successful login
+      setError(`Logged in as ${creds.email}`)
+      dispatch({
+        type: "setToken",
+        data
+      })
     }
     else{
       // failed login
-      data.error // contains error
+      setError(`Failed to Login ${response.status} - ${data.error}`)
+      setCreds({email: "",password: ""})
+      console.log(data.error) // contains error
     }
 
     /*
@@ -43,9 +54,13 @@ export default function Login() {
   return (
     <>
       <h2>Login</h2>
-      <form onSubmit={ } onChange={formStateUpdate}>
-        <input type='email' placeholder='Email'></input><br/><br/>
-        <input type='password' placeholder='Password'></input><br/><br/>
+      {(error !== '') ?
+      <Alert variant={error.match(/^Logged/) ? 'success' : 'danger'}>{error}</Alert>
+      :
+        null}
+      <form onSubmit={formSubmit} onChange={formStateUpdate}>
+        <input type='email' placeholder='Email' value={creds.email}></input><br/><br/>
+        <input type='password' placeholder='Password' value={creds.password}></input><br/><br/>
         <input type='submit' value='Log in' />
       </form>
     </>

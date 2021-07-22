@@ -8,10 +8,10 @@ import Modal from 'react-modal';
 
 import Nav from './components/Nav'
 import Banner from './components/Banner'
-import Contact from './pages/Contact'
-import Events from './pages/Events'
-import Home from './pages/Home'
-import Profile from './pages/Profile'
+// import Contact from './pages/Contact'
+// import Events from './pages/Events'
+// import Home from './pages/Home'
+// import Profile from './pages/Profile'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 

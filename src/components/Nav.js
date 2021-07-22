@@ -19,25 +19,25 @@ export default function Nav({openModal}) {
             <Navbar.Brand>UQLC</Navbar.Brand> 
 
             <Navbar.Toggle className='border-0' aria-controls='navbar-toggle' />
-            <Navbar.Collapse id='navbar-toggle'>
+            <Navbar.Collapse id='navbar-toggle' style={{width:'100%'}}>
               <BootNav className='ml-auto'>
-                <Link className='nav-link' to='/'>Home</Link>
-                <Link className='nav-link' to='/events'>Events</Link>
-                <Link className='nav-link' to='/contact'>Contact Us</Link>
-                <button className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button>
-                <button className='nav-link' onClick={openModal({show: true, type: 'Sign up'})}>Sign up</button>
+                  <Link className='nav-link' to='/'>Home</Link>
+                  <Link className='nav-link' to='/events'>Events</Link>
+                  <Link className='nav-link' to='/contact'>Contact Us</Link>
+                  <button className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button>
+                  <button className='nav-link' onClick={openModal({show: true, type: 'Sign up'})}>Sign up</button>
               </BootNav>
             </Navbar.Collapse>
 
           </Navbar>
 
-          <Route path="/contact"><Contact /></Route>
-          <Route path="/events"><Events /></Route>
+          <Route exact path="/contact"><Contact /></Route>
+          <Route exact path="/events"><Events /></Route>
           <Route exact path="/" ><Home /></Route>
           
 
           </Container>
         </Router>
-        </>
+    </>
   );
 }
