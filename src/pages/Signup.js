@@ -22,7 +22,7 @@ export default function Signup() {
       setError('Passwords do not match')
     }
     
-    let response = await fetch(`${env.API_URL}/users/register`,{
+    let response = await fetch(`${env.API_URL}/api/v1/users/register`,{
       method: 'POST',
       body: JSON.stringify({email: creds.email, password: creds.password}),
       headers: {

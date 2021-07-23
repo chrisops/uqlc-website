@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {context} from '../appReducer'
+import env from 'react-dotenv'
 
 export default function NewPost(props) {
 
@@ -17,17 +18,15 @@ export default function NewPost(props) {
         image: 'https://via.placeholder.com/150'
     })
 
-    async function submitPost(event){
+    async function submitPost(event){ // submit new post on front page
         event.preventDefault()
-        dispatch({
-            type: 'setPosts',
-            newPosts: [post, ...posts]
-        })
-        /* TO DO: fetch POST to API
-
-        let response = await fetch(`${env.API_URL}/posts/new`,{
+        let response = await fetch(`${env.API_URL}/api/v1/posts`,{
             method: 'POST',
-            body: JSON.stringify(post),
+            body: JSON.stringify({
+                user_id: 1, // change this later
+                title: post.title,
+                description: post.body,
+            }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -35,9 +34,9 @@ export default function NewPost(props) {
         let data = await response.json()
         if (response.status === 200){
             // successful post
+            props.getPosts()
         }
 
-        */
        props.setToggle(false)
     }
 

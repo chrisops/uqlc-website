@@ -1,8 +1,9 @@
-import React, {useReducer,useState} from 'react';
+import React, {useEffect, useReducer,useState} from 'react';
 import { BrowserRouter as Router, Switch, Route, } from 'react-router-dom';
 import appReducer, {context} from './appReducer'
 import Modal from 'react-modal';
-
+import env from 'react-dotenv'
+import jwt_decode from 'jwt-decode'
 
 // Components
 
@@ -26,16 +27,39 @@ function App() {
     posts: stubs.posts, // temporary stubs for posts
     about: stubs.about, // temporary stubs for about us text
     userLoggedIn: null,
+    userAdmin: false,
     token: localStorage.getItem('token')
   })
 
-  const [modal,setModal] = useState({show: false, type: 'Log in'})
+  
+  async function getUser(){
+    if (!store.token) return
+
+    let decoded = jwt_decode(store.token)
+    if (decoded.exp > Date.now()/1000){
+      dispatch({
+        type: "setLogin",
+        user: decoded.email
+      })
+    }else{
+      dispatch({
+        type: 'setLogin',
+        user: null
+      })
+      dispatch({
+        type: 'setToken',
+        token: null
+      })
+    }
+  }
+
+  useEffect(() => getUser(),[store.token]) // get user that's logged in when token changes & onMount
+
+  const [modal,setModal] = useState({show: false, type: 'Log in'}) // set Modal state to render
 
   function openModal(newModal){
     return () => setModal({...modal, ...newModal})
   }
-
-  console.log(modal)
 
   return (
     <context.Provider value={{...store, dispatch}}>

@@ -9,8 +9,12 @@ import Contact from '../pages/Contact'
 import Events from '../pages/Events'
 import Home from '../pages/Home'
 
+import {context} from '../appReducer'
 
 export default function Nav({openModal}) {
+
+  const { userLoggedIn } = React.useContext(context)
+
   return (
     <>
         <Router>
@@ -24,6 +28,7 @@ export default function Nav({openModal}) {
                   <Link className='nav-link' to='/'>Home</Link>
                   <Link className='nav-link' to='/events'>Events</Link>
                   <Link className='nav-link' to='/contact'>Contact Us</Link>
+                  { userLoggedIn ? <p>Logged in as {userLoggedIn}</p> : null}
                   <button className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button>
                   <button className='nav-link' onClick={openModal({show: true, type: 'Sign up'})}>Sign up</button>
               </BootNav>
