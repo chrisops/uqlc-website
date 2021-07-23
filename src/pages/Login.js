@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Alert from 'react-bootstrap/Alert'
 import env from 'react-dotenv'
 import {context} from '../appReducer'
-// import env from 'react-dotenv'; Disabled ENV for dev - using stubs
 
 export default function Login() {
 
@@ -18,7 +17,7 @@ export default function Login() {
 
     event.preventDefault()
     
-    let response = await fetch(`${env.API_URL}/users/login`, {
+    let response = await fetch(`${env.API_URL}/api/v1/users/login`, {
       method: 'POST',
       body: JSON.stringify(creds),
       headers: {
@@ -34,6 +33,10 @@ export default function Login() {
       dispatch({
         type: "setToken",
         data
+      })
+      dispatch({
+        type: "setLogin",
+        user: creds.email
       })
     }
     else{

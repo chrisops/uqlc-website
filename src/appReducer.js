@@ -23,6 +23,13 @@ export default function appReducer(currentState, action) {
             }            
         }
 
+        case "setLogin": {
+            return {
+                ...currentState,
+                userLoggedIn: action.user
+            }
+        }
+
         default:
             return currentState
     }
