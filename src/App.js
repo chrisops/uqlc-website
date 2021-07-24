@@ -33,8 +33,7 @@ function App() {
 
   
   async function getUser(){
-    if (!store.token) return
-
+    if (store.token === 'null' || store.token === 'undefined') return
     let decoded = jwt_decode(store.token)
     if (decoded.exp > Date.now()/1000){
       dispatch({
@@ -42,13 +41,16 @@ function App() {
         user: decoded.email
       })
     }else{
+      localStorage.setItem("token", null)
       dispatch({
         type: 'setLogin',
         user: null
       })
       dispatch({
         type: 'setToken',
-        token: null
+        data: {
+          token: null
+        }
       })
     }
   }
@@ -90,7 +92,7 @@ function App() {
           
         </Modal>
 
-        <Banner />
+        {/* <Banner /> */}
     
         </div>
       </Router>

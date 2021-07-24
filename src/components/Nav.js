@@ -9,7 +9,9 @@ import Contact from '../pages/Contact'
 import Events from '../pages/Events'
 import Home from '../pages/Home'
 
+
 import {context} from '../appReducer'
+import Profile from '../pages/Profile';
 
 export default function Nav({openModal}) {
 
@@ -28,7 +30,10 @@ export default function Nav({openModal}) {
                   <Link className='nav-link' to='/'>Home</Link>
                   <Link className='nav-link' to='/events'>Events</Link>
                   <Link className='nav-link' to='/contact'>Contact Us</Link>
+                  <a className='nav-link' href="google.com">Register</a>
+                  { userLoggedIn ? <Link className='nav-link' to='/profile'>Profile</Link> : null}
                   { userLoggedIn ? <p>Logged in as {userLoggedIn}</p> : null}
+                  
                   <button className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button>
                   <button className='nav-link' onClick={openModal({show: true, type: 'Sign up'})}>Sign up</button>
               </BootNav>
@@ -38,6 +43,7 @@ export default function Nav({openModal}) {
 
           <Route exact path="/contact"><Contact /></Route>
           <Route exact path="/events"><Events /></Route>
+          <Route exact path="/profile"><Profile userLoggedIn={userLoggedIn}/></Route>
           <Route exact path="/" ><Home /></Route>
           
 
