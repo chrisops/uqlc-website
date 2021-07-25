@@ -27,28 +27,32 @@ function App() {
     posts: stubs.posts, // temporary stubs for posts
     about: stubs.about, // temporary stubs for about us text
     userLoggedIn: null,
+    userId: null,
     userAdmin: false,
     token: localStorage.getItem('token')
   })
 
   
   async function getUser(){
-    if (!store.token) return
-
+    if (store.token === 'null' || store.token === 'undefined') return
     let decoded = jwt_decode(store.token)
     if (decoded.exp > Date.now()/1000){
       dispatch({
         type: "setLogin",
-        user: decoded.email
+        user: decoded.email,
+        userId: decoded.user_id
       })
     }else{
+      localStorage.setItem("token", null)
       dispatch({
         type: 'setLogin',
         user: null
       })
       dispatch({
         type: 'setToken',
-        token: null
+        data: {
+          token: null
+        }
       })
     }
   }
@@ -90,7 +94,7 @@ function App() {
           
         </Modal>
 
-        <Banner />
+        {/* <Banner /> */}
     
         </div>
       </Router>
