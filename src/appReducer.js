@@ -26,7 +26,8 @@ export default function appReducer(currentState, action) {
         case "setLogin": {
             return {
                 ...currentState,
-                userLoggedIn: action.user
+                userLoggedIn: action.user,
+                userId: action.userId,
             }
         }
 

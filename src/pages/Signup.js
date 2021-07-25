@@ -13,8 +13,6 @@ export default function Signup() {
     setCreds({...creds, [event.target.id]: event.target.value})
   }
 
-  console.log(env)
-
   async function formSubmit(event) {
     console.log(env)
     event.preventDefault()
@@ -28,19 +26,35 @@ export default function Signup() {
       headers: {
         'Content-type': 'application/json'
       }
-    })
+    }).catch(()=>setError('Sign up failed: server unreachable'))
 
-    console.log(response)
-    console.log(response.status)
-    console.log(response.status === 201)
+    if (!response) return
     
     let data = await response.json()
 
-    console.log()
-
     if (response.status === 201){
       // successful sign up
-      setError(`Successfully signed up as ${creds.email}`)
+      
+      let playerRes = await fetch(`${env.API_URL}/api/v1/players`,{
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          user_id: data.user_id,
+          name: '',
+          number: null,
+          position: '',
+          description: '',
+          seasons: null,
+        })
+      })
+      if (playerRes.status === 201){
+        setError(`Successfully signed up as ${creds.email}`)
+      }
+      else{
+        setError(`Failed to sign up - server unreachable`)
+      }
     }
     else{
       // failed sign up

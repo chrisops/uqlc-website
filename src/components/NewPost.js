@@ -31,7 +31,6 @@ export default function NewPost(props) {
                 'Content-Type': 'application/json'
             }
         })
-        let data = await response.json()
         if (response.status === 200){
             // successful post
             props.getPosts()

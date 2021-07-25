@@ -23,35 +23,31 @@ export default function Login() {
       headers: {
         'Content-type': 'application/json'
       }
-    })
+    }).catch(() => setError('Login failed: server unreachable'))
     
-    let data = await response.json()
+    if (response){
+    
+      let data = await response.json()
 
-    if (response.status === 200){
-      // successful login
-      setError(`Logged in as ${creds.email}`)
-      dispatch({
-        type: "setToken",
-        data
-      })
-      dispatch({
-        type: "setLogin",
-        user: creds.email
-      })
+      if (response.status === 200){
+        // successful login
+        setError(`Logged in as ${creds.email}`)
+        dispatch({
+          type: "setToken",
+          data
+        })
+        dispatch({
+          type: "setLogin",
+          user: creds.email
+        })
+      }
+      else{
+        // failed login
+        setError(`Failed to Login - ${data.error}`)
+        setCreds({email: "",password: ""})
+        console.log(data.error) // contains error
+      }
     }
-    else{
-      // failed login
-      setError(`Failed to Login ${response.status} - ${data.error}`)
-      setCreds({email: "",password: ""})
-      console.log(data.error) // contains error
-    }
-
-    /*
-    TO DO: 
-     - add dotenv for dev environment
-     - add logic for handling successful login
-     - store token response in state context
-    */
   }
 
   return (
