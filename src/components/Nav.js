@@ -30,7 +30,7 @@ export default function Nav({openModal}) {
                   <Link className='nav-link' to='/'>Home</Link>
                   <Link className='nav-link' to='/events'>Events</Link>
                   <Link className='nav-link' to='/contact'>Contact Us</Link>
-                  <a className='nav-link' href="google.com">Register</a>
+                  <a className='nav-link' href="https://membership.sportstg.com/regoform.cgi?formID=97328&fbclid=IwAR1Yd2sjU7mn9Jx3gCStKfgWUV-cCVFMXuoztUJSTQXXFBzRkP3taqTtseA">Register</a>
                   { userLoggedIn ? <Link className='nav-link' to='/profile'>Profile</Link> : null}
                   { userLoggedIn ? <p>Logged in as {userLoggedIn}</p> : null}
                   
@@ -45,8 +45,6 @@ export default function Nav({openModal}) {
           <Route exact path="/events"><Events /></Route>
           <Route exact path="/profile"><Profile userLoggedIn={userLoggedIn}/></Route>
           <Route exact path="/" ><Home /></Route>
-          
-
           </Container>
         </Router>
     </>

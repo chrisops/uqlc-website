@@ -43,7 +43,7 @@ export default function Login() {
       }
       else{
         // failed login
-        setError(`Failed to Login ${response.status} - ${data.error}`)
+        setError(`Failed to Login - ${data.error}`)
         setCreds({email: "",password: ""})
         console.log(data.error) // contains error
       }

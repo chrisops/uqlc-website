@@ -27,6 +27,7 @@ function App() {
     posts: stubs.posts, // temporary stubs for posts
     about: stubs.about, // temporary stubs for about us text
     userLoggedIn: null,
+    userId: null,
     userAdmin: false,
     token: localStorage.getItem('token')
   })
@@ -38,7 +39,8 @@ function App() {
     if (decoded.exp > Date.now()/1000){
       dispatch({
         type: "setLogin",
-        user: decoded.email
+        user: decoded.email,
+        userId: decoded.user_id
       })
     }else{
       localStorage.setItem("token", null)
