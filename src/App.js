@@ -34,7 +34,7 @@ function App() {
 
   
   async function getUser(){
-    if (store.token === 'null' || store.token === 'undefined') return
+    if (store.token === 'null' || store.token === 'undefined' || !store.token) return
     let decoded = jwt_decode(store.token)
     if (decoded.exp > Date.now()/1000){
       dispatch({
