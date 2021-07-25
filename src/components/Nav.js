@@ -30,7 +30,7 @@ export default function Nav({openModal}) {
                   <Link className='nav-link' to='/'>Home</Link>
                   <Link className='nav-link' to='/events'>Events</Link>
                   {/* <Link className='nav-link' to='/contact'>Contact Us</Link> */}
-                  <a href='mailto:test@test.com' class='nav-link'>Contact Us</a>
+                  <a href='mailto:test@test.com' className='nav-link'>Contact Us</a>
                   <a className='nav-link' href="https://membership.sportstg.com/regoform.cgi?formID=97328&fbclid=IwAR1Yd2sjU7mn9Jx3gCStKfgWUV-cCVFMXuoztUJSTQXXFBzRkP3taqTtseA">Register</a>
                   { userLoggedIn ? <Link className='nav-link' to='/profile'>Profile</Link> : null}
                   { userLoggedIn ? <p>Logged in as {userLoggedIn}</p> : null}

@@ -34,13 +34,27 @@ export default function Signup() {
 
     if (response.status === 201){
       // successful sign up
-      setError(`Successfully signed up as ${creds.email}`)
+      
       let playerRes = await fetch(`${env.API_URL}/api/v1/players`,{
+        headers: {
+          "Content-Type": "application/json"
+        },
         method: 'POST',
         body: JSON.stringify({
-          user_id: ''
+          user_id: data.user_id,
+          name: '',
+          number: null,
+          position: '',
+          description: '',
+          seasons: null,
         })
       })
+      if (playerRes.status === 201){
+        setError(`Successfully signed up as ${creds.email}`)
+      }
+      else{
+        setError(`Failed to sign up - server unreachable`)
+      }
     }
     else{
       // failed sign up
