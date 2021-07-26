@@ -1,4 +1,4 @@
 window.env = {
-  "API_URL": "https://floating-fortress-68492.herokuapp.com/",
+  "API_URL": "http://localhost:4000",
   "PORT": "3000"
 };
