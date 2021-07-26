@@ -56,7 +56,6 @@ export default function Profile() {
         setError(`Failed to update - ${data.error}`)
       }
     }
-
   }
 
   function updateForm(e){

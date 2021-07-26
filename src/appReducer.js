@@ -28,6 +28,7 @@ export default function appReducer(currentState, action) {
                 ...currentState,
                 userLoggedIn: action.user,
                 userId: action.userId,
+                userAdmin: action.userAdmin,
             }
         }
 
