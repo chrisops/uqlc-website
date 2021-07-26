@@ -40,13 +40,16 @@ function App() {
       dispatch({
         type: "setLogin",
         user: decoded.email,
-        userId: decoded.user_id
+        userId: decoded.user_id,
+        userAdmin: decoded.admin
       })
     }else{
       localStorage.setItem("token", null)
       dispatch({
         type: 'setLogin',
-        user: null
+        user: null,
+        userId: null,
+        userAdmin: false,
       })
       dispatch({
         type: 'setToken',

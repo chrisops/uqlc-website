@@ -8,14 +8,14 @@ import BootNav from 'react-bootstrap/Nav';
 import Contact from '../pages/Contact'
 import Events from '../pages/Events'
 import Home from '../pages/Home'
-
+import Admin from '../pages/Admin'
 
 import {context} from '../appReducer'
 import Profile from '../pages/Profile';
 
 export default function Nav({openModal}) {
 
-  const { userLoggedIn, userId, token } = React.useContext(context)
+  const { userLoggedIn, userAdmin, token } = React.useContext(context)
 
   return (
     <>
@@ -32,7 +32,8 @@ export default function Nav({openModal}) {
                   {/* <Link className='nav-link' to='/contact'>Contact Us</Link> */}
                   <a href='mailto:test@test.com' className='nav-link'>Contact Us</a>
                   <a className='nav-link' href="https://membership.sportstg.com/regoform.cgi?formID=97328&fbclid=IwAR1Yd2sjU7mn9Jx3gCStKfgWUV-cCVFMXuoztUJSTQXXFBzRkP3taqTtseA">Register</a>
-                  { userLoggedIn ? <Link className='nav-link' to='/profile'>Profile</Link> : null}
+                  { (userLoggedIn && !userAdmin) ? <Link className='nav-link' to='/profile'>Profile</Link> : null}
+                  { (userLoggedIn && userAdmin) ? <Link className='nav-link' to='/admin'>Administration</Link> : null}
                   { userLoggedIn ? <p>Logged in as {userLoggedIn}</p> : null}
                   
                   <button className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button>
@@ -45,6 +46,7 @@ export default function Nav({openModal}) {
           <Route exact path="/contact"><Contact /></Route>
           <Route exact path="/events"><Events /></Route>
           <Route exact path="/profile"><Profile /></Route>
+          <Route exact path="/admin"><Admin /></Route>
           <Route exact path="/" ><Home /></Route>
           </Container>
         </Router>

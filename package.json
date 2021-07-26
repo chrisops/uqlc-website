@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.4.0",
+    "@ericz1803/react-google-calendar": "^4.2.1",
     "bootstrap": "^5.0.2",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
@@ -37,7 +39,9 @@
   "react-dotenv": {
     "whitelist": [
       "API_URL",
-      "PORT"
+      "PORT",
+      "G_CAL_ID",
+      "G_API_KEY"
     ]
   }
 }

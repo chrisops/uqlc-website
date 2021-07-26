@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {context} from '../appReducer'
 import env from 'react-dotenv'
 
 export default function NewPost(props) {
@@ -10,7 +9,7 @@ export default function NewPost(props) {
         margin: '8px 25%',
     }
 
-    const { posts, dispatch } = React.useContext(context)
+    // const { posts, dispatch } = React.useContext(context)
 
     const [post, setPost] = useState({
         title: '',

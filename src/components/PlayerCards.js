@@ -13,7 +13,7 @@ export default function PlayerCards() {
   }
 
   async function getCards(){
-    let response = await fetch(`${env.API_URL}/api/v1/players`)
+    let response = await fetch(`${env.API_URL}/api/v1/players/showcase`)
     if (response){
       let data = await response.json()
       if (response.status === 200){
@@ -36,7 +36,7 @@ export default function PlayerCards() {
           cards.map((val,ind) => {
             return (
             <>
-              <div style={divStyle}>
+              <div key={ind} style={divStyle}>
                 <img align='left' src='avatar.png' alt='blank avatar' height='40'/>
                 <h4 style={{marginBottom: '0'}}>{val.name}</h4>
                 <p style={{marginBottom: '0'}}>Number: {val.number}</p>
