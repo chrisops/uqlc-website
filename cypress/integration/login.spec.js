@@ -1,7 +1,17 @@
-
 describe("Login/Logout", () => {
     it("Should Login", () => {
-        cy.visit('https://uqlc.netlify.app/')
+        cy.intercept('http://localhost:4000/api/v1/users/login',  {body: [
+            {email: "gas1@com", password: "hello"}
+        ]})
+        cy.intercept('http://localhost:4000/api/v1/posts',  {body: [
+            {email: "gas1@com", password: "hello"}
+        ]})
+        cy.intercept('http://localhost:4000/api/v1/players/showcase',  {body: [
+            {email: "gas1@com", password: "hello"}
+        ]})
+        
+
+        cy.visit('http://localhost:3000/')
         cy.get('.ml-auto > :nth-child(5)').click()
         // modul should open with login form
 
