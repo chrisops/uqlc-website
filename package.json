@@ -6,6 +6,7 @@
     "@emotion/react": "^11.4.0",
     "@ericz1803/react-google-calendar": "^4.2.1",
     "bootstrap": "^5.0.2",
+    "cypress": "^8.0.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
@@ -18,7 +19,7 @@
   "scripts": {
     "start": "react-dotenv && react-scripts start",
     "build": "react-scripts build && echo '/* /index.html 200' | cat >build/_redirects ",
-    "test": "react-scripts test",
+    "test": "cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
