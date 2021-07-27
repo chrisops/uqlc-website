@@ -22,7 +22,7 @@ export default function AboutUs() {
 
   return (
     <>
-      <h2>About Us</h2>
+      <h2 style={{color: 'aliceblue', background: 'maroon'}}>About Us</h2>
         {/* edit ? 
             <textarea onChange={(e)=>setText(e.target.value)}style={{margin: '20px 25%'}} rows="10" cols="70" placeholder='Write a new post...' id='body'>{about}</textarea>
           : 
@@ -32,7 +32,7 @@ export default function AboutUs() {
 
         */}
 
-          <p style={{margin: '20px 25%'}}>{about}</p> {/* About Us */}
+          <p style={{margin: '20px 25%', border: '1px solid gold'}}>{about}</p> {/* About Us */}
           
           <br/>
           {/*<button onClick={editAbout}>{!edit ? 'Edit' : 'Save' }</button>  =Disabled feature= - editable about us page */ }

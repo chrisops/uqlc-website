@@ -1,5 +1,6 @@
 import React from 'react';
 import env from 'react-dotenv'
+import styled from 'styled-components';
 
 export default function PlayerCards() {
 
@@ -9,7 +10,8 @@ export default function PlayerCards() {
     textAlign: 'left',
     width: '200px',
     height: '110px',
-    backgroundColor: '#F0F0F0'
+    backgroundColor: '#F0F0F0',
+    border: '1px solid gold'
   }
 
   async function getCards(){
@@ -30,7 +32,7 @@ export default function PlayerCards() {
   return (
     <>
       <div style={{position: 'absolute'}}>
-        <h4>The Team:</h4>
+        <h4 style={{color: 'aliceblue', background:'maroon'}}>The Team:</h4>
 
         {
           cards.map((val,ind) => {
