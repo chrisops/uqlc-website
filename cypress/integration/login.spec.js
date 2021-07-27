@@ -1,13 +1,14 @@
-describe("just a dummy", () => {
-    it("should just work", () => {
-        cy.visit('http://localhost:3000/')
-        cy.get("#login").click()
+
+describe("Login/Logout", () => {
+    it("Should Login", () => {
+        cy.visit('https://uqlc.netlify.app/')
+        cy.get('.ml-auto > :nth-child(5)').click()
         // modul should open with login form
 
-        cy.get('[type="email"]').type('testguy@test.com')
-        cy.get('[type="password"]').type('admin')
+        cy.get('[type="email"]').type('gas1@com')
+        cy.get('[type="password"]').type('hello')
         cy.get('[type="submit"]').click()
-
+        cy.get('.ReactModal__Content > :nth-child(1)').click()
     })
     
 })
