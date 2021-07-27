@@ -24,8 +24,7 @@ export default function Profile() {
     data.append('file', image)
     data.append('upload_preset','uqlc_image')
     data.append('cloud_name','bdtech')
-    console.log(data)
-    console.log(image)
+    console.log(`Uploading Image: ${image} - form data: ${data}`)
     let res = await fetch('https://api.cloudinary.com/v1_1/bdtech/image/upload',{
       method: 'POST',
       body: data
@@ -33,9 +32,13 @@ export default function Profile() {
     if (res.status === 200){
       let resData = await res.json()
       // console.log(typeof resData.url)
+      console.log('Cloudinary response:')
+      console.log(resData)
       setProfile({...profile, imageurl: resData.url})
+      console.log(`set profile to: ${resData.url}`)
       // console.log(`setting url ${resData.url} into profile: result: ${profile.imageurl}`)
       // updateProfile(userId)
+      console.log('updating player image')
       let response = await fetch(`${env.API_URL}/api/v1/players/${userId}`,{
         headers: {
           'Content-Type': 'application/json'
@@ -117,7 +120,7 @@ export default function Profile() {
   return userLoggedIn ? (
     <>
       {(error !== '') ?
-      <Alert variant={error.match(/^Profile/) ? 'success' : 'danger'}>{error}</Alert>
+      <Alert variant={error.match(/^Failed/) ? 'danger' : 'success'}>{error}</Alert>
       :
         null}
       { (profile.imageurl !== '' && profile.imageurl !== null) ? <img src={profile.imageurl} alt='Lacrosse Player' height='200'/> : <img src='avatar.png' alt='Lacrosse Player' height='200'/> }
@@ -128,7 +131,7 @@ export default function Profile() {
       <h3>{userLoggedIn} </h3>
       <p>ID #{userId}</p>
       <form onSubmit={(e) => {e.preventDefault(); updateProfile(userId)}} onChange={updateForm}>
-        <h4>Name: <input id='name' type='text' value={profile.name ? profile.name : ''} /></h4>
+        <h4>Name: <input id='name' type='text' value={profile.name ? profile.name : ''} /></h4> 
         <h4>Number: <input id='number' type='text' value={profile.number ? profile.number : ''} /></h4>
         <h4>Position: <input id='position' type='text' value={profile.position ? profile.position : ''} /></h4>
         <h4>Seasons: <input id='totalSeasons' type='text' value={profile.totalSeasons ? profile.totalSeasons : ''} /></h4>
@@ -144,5 +147,5 @@ export default function Profile() {
         <br/>
         <br/>
         <h1>Login to view your profile</h1>
-        </>)
+      </>)
 }
