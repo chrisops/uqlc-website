@@ -5,6 +5,8 @@ import Alert from 'react-bootstrap/Alert'
 
 export default function Profile() {
 
+  const [image,setImage] = React.useState('')
+
   const {userLoggedIn, userId} = React.useContext(context)
   const [error,setError] = React.useState('')
 
@@ -14,7 +16,28 @@ export default function Profile() {
     position: '',
     totalSeasons: '',
     description: '',
+    imageurl: '',
   })
+
+  async function uploadImage(){
+    const data = new FormData()
+    data.append('file', image)
+    data.append('upload_preset','uqlc_image')
+    data.append('cloud_name','bdtech')
+    console.log(data)
+    console.log(image)
+    let res = await fetch('https://api.cloudinary.com/v1_1/bdtech/image/upload',{
+      method: 'POST',
+      body: data
+    })
+    if (res.status === 200){
+      let resData = await res.json()
+      setProfile({...profile, imageurl: resData.url})
+      updateProfile(userId)
+    }else{
+      setError('Failed to upload image')
+    }
+  }
 
   async function getProfile(userId){
     if (!userId) return
@@ -22,11 +45,12 @@ export default function Profile() {
     if (response){
       let data = await response.json()
       setProfile({
-        name: data[0].name,
-        number: data[0].number,
-        position: data[0].position,
-        totalSeasons: data[0].seasons,
-        description: data[0].description,
+        name: data.name,
+        number: data.number,
+        position: data.position,
+        totalSeasons: data.seasons,
+        description: data.description,
+        imageurl: data.imageurl,
       })
     }
   }
@@ -44,6 +68,7 @@ export default function Profile() {
         position: profile.position,
         seasons: Number(profile.totalSeasons),
         description: profile.description,
+        imageurl: profile.imageurl,
       })
     })
     if (response){
@@ -73,9 +98,12 @@ export default function Profile() {
       <Alert variant={error.match(/^Profile/) ? 'success' : 'danger'}>{error}</Alert>
       :
         null}
-      <img src='avatar.png' alt='blank avatar' height='200'/>
+      { <img src={(profile.imageurl !== '') ? profile.imageurl : 'avatar.png' } alt='Lacrosse Player' height='200'/> }
       <br />
-      <input type='file' />
+      <input type='file' onChange={(e)=>{
+        setImage(e.target.files[0])
+        uploadImage()
+        }}/>
       <h3>{userLoggedIn} </h3>
       <p>ID #{userId}</p>
       <form onSubmit={() => updateProfile(userId)} onChange={updateForm}>
