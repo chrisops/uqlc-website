@@ -4,6 +4,7 @@ import appReducer, {context} from './appReducer'
 import Modal from 'react-modal';
 import env from 'react-dotenv'
 import jwt_decode from 'jwt-decode'
+import './style.css'
 
 // Components
 
@@ -72,7 +73,7 @@ function App() {
     <context.Provider value={{...store, dispatch}}>
       <Router>
         <div style={{ textAlign: 'center' }}>
-        <Nav openModal={openModal} />
+        <Nav openModal={openModal} id="responsive-nav"/>
         <Modal 
           isOpen = {modal.show}
           onRequestClose = {openModal({show: false})}

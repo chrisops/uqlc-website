@@ -2,6 +2,7 @@ import React from 'react';
 import NewPost from './NewPost'
 import {context} from '../appReducer'
 import env from 'react-dotenv'
+import {NewPostBtn, PostContainer, PostImg} from '../pages/stylePage'
 
 export default function Post() {
   
@@ -86,13 +87,14 @@ export default function Post() {
     <>
         <h2>Latest News</h2>
 
-        { userAdmin ? <button onClick={()=> setToggle(!toggle)}>New post</button> : null}
+        
+        { userAdmin ? <NewPostBtn onClick={()=> setToggle(!toggle)}>New post</NewPostBtn> : null}
 
         { toggle ? <NewPost setToggle={setToggle} getPosts={getPosts} /> : null }
 
         { posts.map((post, index) => {
           return (
-            <div key={index}>
+            <PostContainer  key={index}>
               <h3>{post.title}</h3>
                 { // render edit and delete if edit is not set
                 (edit !== post.id && userAdmin) ? 
@@ -112,7 +114,7 @@ export default function Post() {
               </>
               }
               <br/>
-            </div>
+            </PostContainer>
           )
         }) }
     </>
