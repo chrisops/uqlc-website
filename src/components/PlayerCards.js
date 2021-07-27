@@ -38,7 +38,8 @@ export default function PlayerCards() {
           cards.map((val,ind) => {
             return (
               <div key={ind} style={divStyle}>
-                <img align='left' src='avatar.png' alt='blank avatar' height='40'/>
+                {(val.imageurl !== '' && val.imageurl) ? <img align='left' src={val.imageurl} alt='blank avatar' height='40'/>
+                : <img align='left' src='avatar.png' alt='blank avatar' height='40'/>}
                 <h4 style={{marginBottom: '0'}}>{val.name}</h4>
                 <p style={{marginBottom: '0'}}>Number: {val.number}</p>
                 <p style={{marginBottom: '0'}}>Position: {val.position}</p>

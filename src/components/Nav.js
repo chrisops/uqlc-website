@@ -57,7 +57,6 @@ export default function Nav({openModal}) {
                   { !userLoggedIn ? <button className='nav-link' onClick={openModal({show: true, type: 'Sign up'})}>Sign up</button> : null}
               </BootNav>
             </Navbar.Collapse>
-
           </Navbar>
 
           <Route exact path="/contact"><Contact /></Route>
