@@ -1,5 +1,6 @@
 # Christopher Baker & Chris Hoggan - T3A2-A
 ---
+
 ## Resources:
 
 Deployed Front-End: https://uqlc.netlify.app/
@@ -10,6 +11,30 @@ Trello: https://trello.com/b/b6CfYCxG/uqlc-website
 
 Source Control Front-End: https://github.com/ChrisBaker-dev/uqlc-website
 Source Control Back-End: https://github.com/ChrisBaker-dev/uqlc-api
+
+---
+
+## How to use this app:
+
+This app is for organising events and signing up players to the UQLC club.
+
+There is an admin login for the live demo:
+
+    username: admin@admin.com
+    password: admin
+
+When logged in as an admin, you can post news to the front page by clicking *"New Post"*
+
+There is also a link in the navbar called *"Administration"* where you can select player cards to show on the front page.
+
+When logged in as a user, click on *"profile"* to upload your picture and information as a player card, for the admin to approve and show your player card on the front page.
+
+## ENV variables for local build
+
+API_URL=https://floating-fortress-68492.herokuapp.com/
+G_API_KEY=AIzaSyCaoMGb4nhdIivxfXkRp8NW4DS2q2VNv44
+G_CAL_ID=uqlacrosse@gmail.com
+PORT=3000
 
 ---
 ## Front-end React Libraries
