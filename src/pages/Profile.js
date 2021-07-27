@@ -48,7 +48,7 @@ export default function Profile() {
           imageurl: resData.url,
         })
       })
-      if (response && response.status == 200){
+      if (response && response.status === 200){
         setError('Updated profile image')
         getProfile(userId)
       }else{

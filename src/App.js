@@ -1,15 +1,13 @@
 import React, {useEffect, useReducer,useState} from 'react';
-import { BrowserRouter as Router, Switch, Route, } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import appReducer, {context} from './appReducer'
 import Modal from 'react-modal';
-import env from 'react-dotenv'
 import jwt_decode from 'jwt-decode'
 import './style.css'
 
 // Components
 
 import Nav from './components/Nav'
-import Banner from './components/Banner'
 // import Contact from './pages/Contact'
 // import Events from './pages/Events'
 // import Home from './pages/Home'
@@ -60,8 +58,8 @@ function App() {
       })
     }
   }
-
-  useEffect(() => getUser(),[store.token]) // get user that's logged in when token changes & onMount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => getUser(), [store.token]) // get user that's logged in when token changes & onMount
 
   const [modal,setModal] = useState({show: false, type: 'Log in'}) // set Modal state to render
 

@@ -2,7 +2,7 @@ import React from 'react';
 import NewPost from './NewPost'
 import {context} from '../appReducer'
 import env from 'react-dotenv'
-import {NewPostBtn, PostContainer, PostImg} from '../pages/stylePage'
+import {NewPostBtn, PostContainer} from '../pages/stylePage'
 
 export default function Post() {
   
@@ -80,7 +80,7 @@ export default function Post() {
       }
     }
 
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     React.useEffect(getPosts,[])
 
   return (

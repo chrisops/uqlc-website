@@ -1,6 +1,5 @@
 import React from 'react';
 import env from 'react-dotenv'
-import styled from 'styled-components';
 import {PlayerName, Playerinfo} from '../pages/stylePage'
 
 export default function PlayerCards() {

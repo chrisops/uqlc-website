@@ -36,7 +36,7 @@ export default function Signup() {
       // successful sign up
       
       let playerRes = await fetch(`${env.API_URL}/api/v1/players`,{
-        headers: {
+        headers: { // 
           "Content-Type": "application/json"
         },
         method: 'POST',
@@ -50,8 +50,37 @@ export default function Signup() {
         })
       })
       if (playerRes.status === 201){
-        setError(`Successfully signed up as ${creds.email}`)
-      }
+        
+        let response = await fetch(`${env.API_URL}/api/v1/users/login`, {
+          method: 'POST',
+          body: JSON.stringify(creds),
+          headers: {
+            'Content-type': 'application/json'
+          }
+        }).catch(() => setError('Login failed: server unreachable'))
+        if (response){
+    
+          let data = await response.json()
+    
+          if (response.status === 200){
+            // successful login
+            setError(`Successfully signed up as ${creds.email}`)
+            dispatch({
+              type: "setToken",
+              data
+            })
+            dispatch({
+              type: "setLogin",
+              user: creds.email
+            })
+          }
+          else{
+            // failed login
+            setError(`Failed to sign up - ${data.error}`)
+            setCreds({email: "",password: ""})
+            console.log(data.error) // contains error
+          }
+        }
       else{
         setError(`Failed to sign up - server unreachable`)
       }
@@ -61,14 +90,8 @@ export default function Signup() {
       console.log(data) // contains error
       setError(`${response.status} - ${data.error}`)
     }
-
-    
-    // TO DO: 
-    //  - add dotenv for dev environment
-    //  - add logic for handling successful login
-    //  - store token response in state context
-    
   }
+}
 
   return (
     <>

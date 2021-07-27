@@ -1,12 +1,6 @@
 import React from 'react';
-import {context} from '../appReducer'
-import {NewPost} from '../pages/stylePage'
 
 export default function AboutUs() {
-
-  
-  const {about} = React.useContext(context)
-
   /*const [text,setText] = React.useState(about)
   const [edit,setEdit] = React.useState(false)
   const {dispatch} = React.useContext(context)
