@@ -1,6 +1,7 @@
 import React from 'react';
 import env from 'react-dotenv'
 import styled from 'styled-components';
+import {PlayerName, Playerinfo} from '../pages/stylePage'
 
 export default function PlayerCards() {
 
@@ -10,8 +11,8 @@ export default function PlayerCards() {
     textAlign: 'left',
     width: '200px',
     height: '110px',
-    backgroundColor: '#F0F0F0',
-    border: '1px solid gold'
+    backgroundColor: 'lightblue',
+    marginTop: '2px'
   }
 
   async function getCards(){
@@ -40,8 +41,8 @@ export default function PlayerCards() {
               <div key={ind} style={divStyle}>
                 {(val.imageurl !== '' && val.imageurl) ? <img align='left' src={val.imageurl} alt='blank avatar' height='40'/>
                 : <img align='left' src='avatar.png' alt='blank avatar' height='40'/>}
-                <h4 style={{marginBottom: '0'}}>{val.name}</h4>
-                <p style={{marginBottom: '0'}}>Number: {val.number}</p>
+                <PlayerName style={{marginBottom: '0'}}>{val.name}</PlayerName>
+                <Playerinfo style={{marginBottom: '0'}}>Number: {val.number}</Playerinfo>
                 <p style={{marginBottom: '0'}}>Position: {val.position}</p>
                 <p style={{marginBottom: '0'}}>Seasons: {val.seasons}</p>
               </div>

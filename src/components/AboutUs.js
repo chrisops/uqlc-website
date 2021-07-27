@@ -1,5 +1,6 @@
 import React from 'react';
 import {context} from '../appReducer'
+import {NewPost} from '../pages/stylePage'
 
 export default function AboutUs() {
 
@@ -32,7 +33,7 @@ export default function AboutUs() {
 
         */}
 
-          <p style={{margin: '20px 25%', border: '1px solid gold'}}>The UQ Lacrosse Club </p> {/* About Us */}
+          <p style={{margin: '20px 25%', marginRight: '50px'}}>UQ Lacrosse Club is dedicated to growing the sport of lacrosse within Brisbane. Although we are a UQ Sport-affiliated club, we don't require our members to be UQ students or staff. Contact us to learn more!</p> {/* About Us */}
           
           <br/>
           {/*<button onClick={editAbout}>{!edit ? 'Edit' : 'Save' }</button>  =Disabled feature= - editable about us page */ }

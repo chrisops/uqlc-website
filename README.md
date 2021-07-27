@@ -11,8 +11,6 @@ Source Control Back-End: https://github.com/ChrisBaker-dev/uqlc-api
 
 ---
 ## Libraries
-
-
 ### Cloudinary:
 Cloudinary is used in order to handle image upload to the webpage. Image upload is used for both the player profile and posts made by an admin.
 
