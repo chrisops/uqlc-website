@@ -51,7 +51,6 @@ export default function Nav({openModal}) {
                   { (userLoggedIn && !userAdmin) ? <Link className='nav-link' to='/profile'>Profile</Link> : null}
                   { (userLoggedIn && userAdmin) ? <Link className='nav-link' to='/admin'>Administration</Link> : null}
                   { userLoggedIn ? <p>Logged in as {userLoggedIn}</p> : null}
-                  
                   { userLoggedIn ? <button className='nav-link' onClick={logOut}>Log out</button>
                   :
                     <button className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button> }
