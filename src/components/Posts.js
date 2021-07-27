@@ -4,7 +4,8 @@ import {context} from '../appReducer'
 import env from 'react-dotenv'
 
 export default function Post() {
-
+  
+    
     const {posts, dispatch} = React.useContext(context)
     const [toggle,setToggle] = React.useState(false)
     const [edit,setEdit] = React.useState(0)
@@ -64,7 +65,7 @@ export default function Post() {
             id: val.id,
             title: val.title, 
             body: val.description, 
-            image: 'https://via.placeholder.com/150' //temporary
+            image: (val.image && val.image !== '') ? val.image : null //temporary
           }
         })
         dispatch({
@@ -101,7 +102,8 @@ export default function Post() {
                   </>
                   : null
                 }
-              <img align='left' alt='placeholder' src={post.image} style={imgStyle} />
+              {(post.image && post.image !== '') ? <img align='left' width='150' height='150' alt='placeholder' src={post.image} style={imgStyle} /> :
+              <img align='left' width='150' height='150' alt='placeholder' src='uqlc_logo.jpeg' style={imgStyle} />}
               {(edit !== post.id) ? <p style={pStyle}>{post.body}</p> : 
               <>
                 <input type='submit' value='submit' onClick={(e) => {e.preventDefault(); updatePost(post.id); setText(post.body)}}/><button onClick={()=>setEdit(0)}>Cancel</button>
