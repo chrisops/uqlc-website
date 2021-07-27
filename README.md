@@ -1,4 +1,4 @@
-# Christopher Baker & Chris Hoggan - T3A2-A
+# Christopher Baker & Chris Hoggan - T3A2-B
 ---
 
 ## Resources:
