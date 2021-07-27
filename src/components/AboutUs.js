@@ -32,7 +32,7 @@ export default function AboutUs() {
 
         */}
 
-          <p style={{margin: '20px 25%', border: '1px solid gold'}}>{about}</p> {/* About Us */}
+          <p style={{margin: '20px 25%', border: '1px solid gold'}}>The UQ Lacrosse Club </p> {/* About Us */}
           
           <br/>
           {/*<button onClick={editAbout}>{!edit ? 'Edit' : 'Save' }</button>  =Disabled feature= - editable about us page */ }

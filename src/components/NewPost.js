@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import env from 'react-dotenv'
+import { context } from '../appReducer'
 
 export default function NewPost(props) {
 
@@ -10,6 +11,8 @@ export default function NewPost(props) {
     }
 
     // const { posts, dispatch } = React.useContext(context)
+
+    const {userId} = React.useContext(context)
 
     const [post, setPost] = useState({
         title: '',
@@ -22,7 +25,7 @@ export default function NewPost(props) {
         let response = await fetch(`${env.API_URL}/api/v1/posts`,{
             method: 'POST',
             body: JSON.stringify({
-                user_id: 1, // change this later
+                user_id: userId, // change this later
                 title: post.title,
                 description: post.body,
             }),
