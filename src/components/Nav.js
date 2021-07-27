@@ -36,7 +36,7 @@ export default function Nav({openModal}) {
                   { (userLoggedIn && userAdmin) ? <Link className='nav-link' to='/admin'>Administration</Link> : null}
                   { userLoggedIn ? <p>Logged in as {userLoggedIn}</p> : null}
                   
-                  <button className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button>
+                  <button id='login' className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button>
                   <button className='nav-link' onClick={openModal({show: true, type: 'Sign up'})}>Sign up</button>
               </BootNav>
             </Navbar.Collapse>
