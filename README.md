@@ -3,16 +3,16 @@
 ## Resources:
 
 Deployed Front-End: https://uqlc.netlify.app/
-Deployed Back-End:
+
+Deployed API: https://uqlc-api.herokuapp.com/
+
 Trello: https://trello.com/b/b6CfYCxG/uqlc-website
 
 Source Control Front-End: https://github.com/ChrisBaker-dev/uqlc-website
 Source Control Back-End: https://github.com/ChrisBaker-dev/uqlc-api
 
 ---
-## Libraries
-### Cloudinary:
-Cloudinary is used in order to handle image upload to the webpage. Image upload is used for both the player profile and posts made by an admin.
+## Front-end React Libraries
 
 ### Cypress:
 Cypress is used in order to complete automated testing on the site. These tests include testing the ability to login, register and create a player profile. 
@@ -21,7 +21,157 @@ Cypress is used in order to complete automated testing on the site. These tests 
 React styled components allows for easier styling on the react components.
 
 ### Modal:
-React modal allows for the login/register action to 
+React modal allows for the login/register action to display as a dismissible pop-up for a better user flow experience
+
+### Cloudinary:
+Cloudinary is used in order to handle image upload to the webpage. Image upload is used for both the player profile and posts made by an admin.
+
+### JWT-decode
+Javascript web tokens is a feature to encrypt JSON objects to be stored in the local browser cache for session tracking and authentication
+
+### React-bootstrap
+Bootstrap is a CSS framework to assist in styling and making the elements responsive on the website
+
+### React-Google-Calendar
+React Google Calendar is an NPM package to structure Google calendar API queries into a single React component that is pre-styled
+
+### React-Dotenv
+Dotenv is a package for setting environment variables so that sensitive keys are not exposed in the source code
+
+### React-Router-Dom
+React Router is a ubiquitous package for rendering pages dynamically within the javascript of the 
+
+## Back-end API libraries
+
+### bcrypt
+
+bcrypt is an industry standard password hashing algorithm that is fully secure to modern requirements
+
+### jwt
+
+Javascript web tokens are encrypted and decrypted on the back end for securely authenticating browser sessions
+
+---
+
+## Agile Project Workflow
+
+Development began on 16th July, divided into three sprints to finish and deploy the minimum viable product for the client. 
+
+Front end development assigned to Chris H
+
+Back en API development assigned to Chris B
+
+## Sprint 1 - 16th July - 20th July (5 days)
+
+### **Goal:** Begin building MVP features, writing API calls and building database.
+
+<br>
+
+**20th July Result: Our team completed all delegated tasks well before the deadline:**
+
+## Front-end tasks Assigned to Chris H:
+
+**finish all pages: About us, Contact, Events, Login and signup (no styling)**
+
+> *Chris completed all pages needed, we decided to remove Signup as a page and move this into a modal instead*
+
+**write all API calls (using stubs at first)**
+
+> *Chris completed writing stubs for the Home page, listing placeholder images and posts*
+
+**build modals for login and new posts**
+
+> *Completed*
+
+<br>
+
+## Back-end tasks Assigned to Chris B:
+
+**build all database models for Users and blog posts**
+
+> *Completed and added a new model for players, a model for users to set their player information for the club*
+
+**install devise and handle authentication POST requests**
+
+> *Devise was not needed for the back-end API, we instead used bcrypt directly and encrypted the passwords*
+
+**install cloudinary and handle image uploading POST requests**
+
+> *This was instead completed on the final third sprint*
+
+## Sprint 2 - 21st July - 23rd July (3 days)
+
+### **Goal:** Connect API end-to-end, making sure to handle any errors thrown by the API, complete MVP product.
+
+<br>
+
+**23rd July results - Most tasks done, some tricky bugs have used up development time:**
+
+## Front-end tasks assigned to Chris H
+**remove stubs and test API handling for sign-up, authentication, and writing new blog posts**
+
+> *Half-completed, user sign up working now, posts can be created, read, and deleted. Player profile updating yet to be finished*
+
+**build event API to google calendar, for adding new events and displaying on events page**
+
+> *Google embed calandar has been added, but the styling is not very good. Chris will be researching a better way to integrate the Google calendar API with styling*
+
+## API tasks assigned to Chris Baker
+
+**Test API handling for authentication end-to-end**
+
+> *Completed, sign up and login functionality fully working, need to add admin privileges to the API*
+
+**Test database queries for posts and image uploading**
+
+> *API queries are all working for creating and updating*
+
+**Start writing rspec or unit-tests to satisfy rubric**
+
+> *rspec testing was too tricky and cumbersome to implement so we've opted to use mini test instead*
+
+## Sprint 3 - 23th July - 26th July (4 days)
+
+### **Goal:** Style the front-end web pages and polish the app for release 1.0
+
+<br>
+
+**27th July results: some features that were dependent on others were left to the end (such as the player cards feature) - the MVP was achieved before the deadline and user testing was carried out, results below:**
+
+## Front-end (Assigned to CH)
+**Add styling to components to make the site aesthetic**
+
+> *Basic styling was completed but was de-prioritised for core functionality and additional features*
+
+**Build responsive components for mobile and tablet screens**
+
+> *Completed as a final task*
+
+**Finish any remaining features**
+
+> *Implementation of cloudinary was moved to the front-end instead, React uses an API call with Form Data to upload the image and saves the URL in the API to render the image*
+
+> *The client would need a way to publish their team's information as profile cards, we added a feature as an admin to select player cards to publish*
+
+## Back-end (Assigned to CB)
+**Optimise database queries to make sure there are no redundant operations**
+
+> *This was completed, no redundant queries, though we seperated image uploading API call from the profile update API call as cloudinary operations would often take a lot longer to complete*
+
+**Assigned to Both CH and CB to be done:**
+
+**Do user testing for the app and record any UI/UX problems to be fixed**
+
+> *User testing was carried out and polishing features were implemented, such as the function to log in the user when they sign up:*
+
+## User testing record:
+
+![](usertesting26july.png)
+
+
+**Notes from user testing:**
+
+*When signing up, the user has to log in again, which is a bad user experience, we implemented a change to make this better.*
 
 ---
 
