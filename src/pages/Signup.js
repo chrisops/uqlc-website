@@ -43,10 +43,10 @@ export default function Signup() {
         body: JSON.stringify({
           user_id: data.user_id,
           name: '',
-          number: null,
+          number: 0,
           position: '',
           description: '',
-          seasons: null,
+          seasons: 0,
         })
       })
       if (playerRes.status === 201){
