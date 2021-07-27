@@ -6,7 +6,7 @@ import env from 'react-dotenv'
 export default function Post() {
   
     
-    const {posts, dispatch} = React.useContext(context)
+    const {posts, dispatch, userAdmin} = React.useContext(context)
     const [toggle,setToggle] = React.useState(false)
     const [edit,setEdit] = React.useState(0)
     const [text, setText] = React.useState('')
@@ -86,16 +86,16 @@ export default function Post() {
     <>
         <h2>Latest News</h2>
 
-        <button onClick={()=> setToggle(!toggle)}>New post</button>
+        { userAdmin ? <button onClick={()=> setToggle(!toggle)}>New post</button> : null}
 
-        { toggle ? <NewPost setToggle={setToggle} getPosts={getPosts} /> : null}
+        { toggle ? <NewPost setToggle={setToggle} getPosts={getPosts} /> : null }
 
         { posts.map((post, index) => {
           return (
             <div key={index}>
               <h3>{post.title}</h3>
                 { // render edit and delete if edit is not set
-                (edit !== post.id) ? 
+                (edit !== post.id && userAdmin) ? 
                   <>
                     <button onClick={() => {setEdit(post.id); setText(post.body)}}>Edit</button>
                     <button onClick={() => deletePost(post.id)}>Delete</button>
@@ -109,7 +109,6 @@ export default function Post() {
                 <input type='submit' value='submit' onClick={(e) => {e.preventDefault(); updatePost(post.id); setText(post.body)}}/><button onClick={()=>setEdit(0)}>Cancel</button>
                 <textarea value={text} onChange={(e)=>setText(e.target.value)} style={{margin: '30px 20%'}} rows="10" cols="50" id='body'>
                 </textarea>
-                
               </>
               }
               <br/>
