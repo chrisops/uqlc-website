@@ -32,9 +32,9 @@ export default function Profile() {
     })
     if (res.status === 200){
       let resData = await res.json()
-      console.log(typeof resData.url)
+      // console.log(typeof resData.url)
       setProfile({...profile, imageurl: resData.url})
-      console.log(`setting url ${resData.url} into profile: result: ${profile.imageurl}`)
+      // console.log(`setting url ${resData.url} into profile: result: ${profile.imageurl}`)
       // updateProfile(userId)
       let response = await fetch(`${env.API_URL}/api/v1/players/${userId}`,{
         headers: {
