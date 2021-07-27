@@ -33,7 +33,7 @@ export default function AboutUs() {
           {/*<button onClick={editAbout}>{!edit ? 'Edit' : 'Save' }</button>  =Disabled feature= - editable about us page */ }
           <br/><br/>
       
-      <img alt='placeholder' src="https://via.placeholder.com/250" />
+      <img alt='placeholder' width='250' height='250' src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/UNC_Lacrosse.jpg/800px-UNC_Lacrosse.jpg" />
     </>
   );
 }
