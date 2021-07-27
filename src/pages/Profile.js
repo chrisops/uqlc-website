@@ -32,9 +32,27 @@ export default function Profile() {
     })
     if (res.status === 200){
       let resData = await res.json()
-      console.log(resData)
+      console.log(typeof resData.url)
       setProfile({...profile, imageurl: resData.url})
-      updateProfile(userId)
+      console.log(`setting url ${resData.url} into profile: result: ${profile.imageurl}`)
+      // updateProfile(userId)
+      let response = await fetch(`${env.API_URL}/api/v1/players/${userId}`,{
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'PUT',
+        body: JSON.stringify({
+          imageurl: resData.url,
+        })
+      })
+      if (response && response.status == 200){
+        setError('Updated profile image')
+        getProfile(userId)
+      }else{
+        let errorDat = await res.json()
+        console.log(errorDat)
+        setError('Failed to update profile image')
+      }
     }else{
       let resData = await res.json()
       console.log(resData)
@@ -47,6 +65,7 @@ export default function Profile() {
     let response = await fetch(`${env.API_URL}/api/v1/players/${userId}`)
     if (response){
       let data = await response.json()
+      console.log(data)
       setProfile({
         name: data.name,
         number: data.number,
@@ -95,20 +114,20 @@ export default function Profile() {
 
   React.useEffect(() => getProfile(userId),[userId])
 
-  return (
+  return userLoggedIn ? (
     <>
       {(error !== '') ?
       <Alert variant={error.match(/^Profile/) ? 'success' : 'danger'}>{error}</Alert>
       :
         null}
-      { <img src={(profile.imageurl === '') ? profile.imageurl : 'avatar.png' } alt='Lacrosse Player' height='200'/> }
+      { (profile.imageurl !== '' && profile.imageurl !== null) ? <img src={profile.imageurl} alt='Lacrosse Player' height='200'/> : <img src='avatar.png' alt='Lacrosse Player' height='200'/> }
       <br />
       <input type='file' onChange={(e)=>{
         setImage(e.target.files[0])
-        }}/><input type='submit' value='Save Picture' onClick={uploadImage} />
+        }}/><input type='submit' value='Save Picture' onClick={(e) => {e.preventDefault(); uploadImage()}} />
       <h3>{userLoggedIn} </h3>
       <p>ID #{userId}</p>
-      <form onSubmit={() => updateProfile(userId)} onChange={updateForm}>
+      <form onSubmit={(e) => {e.preventDefault(); updateProfile(userId)}} onChange={updateForm}>
         <h4>Name: <input id='name' type='text' value={profile.name ? profile.name : ''} /></h4>
         <h4>Number: <input id='number' type='text' value={profile.number ? profile.number : ''} /></h4>
         <h4>Position: <input id='position' type='text' value={profile.position ? profile.position : ''} /></h4>
@@ -120,5 +139,10 @@ export default function Profile() {
         <br />
       </form>
     </>
-  );
+  ) : (<>
+        <br/>
+        <br/>
+        <br/>
+        <h1>Login to view your profile</h1>
+        </>)
 }
