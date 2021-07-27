@@ -3,7 +3,7 @@ import Alert from 'react-bootstrap/Alert'
 import env from 'react-dotenv'
 import {context} from '../appReducer'
 
-export default function Login() {
+export default function Login({openModal}) {
 
   const [creds,setCreds] = useState({email: "",password: ""})
   const [error,setError] = React.useState('')
@@ -32,6 +32,7 @@ export default function Login() {
       if (response.status === 200){
         // successful login
         setError(`Logged in as ${creds.email}`)
+        
         dispatch({
           type: "setToken",
           data
@@ -40,6 +41,7 @@ export default function Login() {
           type: "setLogin",
           user: creds.email
         })
+        openModal({show: false})
       }
       else{
         // failed login

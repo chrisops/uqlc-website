@@ -83,12 +83,12 @@ function App() {
           
           modal.type === 'Log in' ?
             <>
-              <Login />
+              <Login openModal={openModal} />
             </>
           :
             modal.type === 'Sign up' ?
               <>
-                <Signup />
+                <Signup openModal={openModal} />
               </>
             :
               <h1>Error</h1>

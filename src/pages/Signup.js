@@ -3,7 +3,7 @@ import Alert from 'react-bootstrap/Alert'
 import {context} from '../appReducer'
 import env from 'react-dotenv'
 
-export default function Signup() {
+export default function Signup({openModal}) {
 
   const [creds,setCreds] = React.useState({email: "",password: "", confirm: ""})
   const [error,setError] = React.useState('')
@@ -73,6 +73,7 @@ export default function Signup() {
               type: "setLogin",
               user: creds.email
             })
+            openModal({show: false})
           }
           else{
             // failed login
