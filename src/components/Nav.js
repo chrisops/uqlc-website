@@ -15,7 +15,23 @@ import Profile from '../pages/Profile';
 
 export default function Nav({openModal}) {
 
-  const { userLoggedIn, userAdmin, token } = React.useContext(context)
+  const { userLoggedIn, userAdmin, dispatch } = React.useContext(context)
+
+  function logOut(){
+    localStorage.setItem("token", null)
+    dispatch({
+      type: 'setLogin',
+      user: null,
+      userId: null,
+      userAdmin: false,
+    })
+    dispatch({
+      type: 'setToken',
+      data: {
+        token: null
+      }
+    })
+  }
 
   return (
     <>
@@ -35,9 +51,10 @@ export default function Nav({openModal}) {
                   { (userLoggedIn && !userAdmin) ? <Link className='nav-link' to='/profile'>Profile</Link> : null}
                   { (userLoggedIn && userAdmin) ? <Link className='nav-link' to='/admin'>Administration</Link> : null}
                   { userLoggedIn ? <p>Logged in as {userLoggedIn}</p> : null}
-                  
-                  <button id='login' className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button>
-                  <button className='nav-link' onClick={openModal({show: true, type: 'Sign up'})}>Sign up</button>
+                  { userLoggedIn ? <button className='nav-link' onClick={logOut}>Log out</button>
+                  :
+                    <button className='nav-link' onClick={openModal({show: true, type: 'Log in'})}>Log in</button> }
+                  { !userLoggedIn ? <button className='nav-link' onClick={openModal({show: true, type: 'Sign up'})}>Sign up</button> : null}
               </BootNav>
             </Navbar.Collapse>
 

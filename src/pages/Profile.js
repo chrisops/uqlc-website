@@ -12,9 +12,9 @@ export default function Profile() {
 
   const [profile,setProfile] = React.useState({
     name: '',
-    number: '',
+    number: 0,
     position: '',
-    totalSeasons: '',
+    totalSeasons: 0,
     description: '',
     imageurl: '',
   })
@@ -32,9 +32,12 @@ export default function Profile() {
     })
     if (res.status === 200){
       let resData = await res.json()
+      console.log(resData)
       setProfile({...profile, imageurl: resData.url})
       updateProfile(userId)
     }else{
+      let resData = await res.json()
+      console.log(resData)
       setError('Failed to upload image')
     }
   }
@@ -98,12 +101,11 @@ export default function Profile() {
       <Alert variant={error.match(/^Profile/) ? 'success' : 'danger'}>{error}</Alert>
       :
         null}
-      { <img src={(profile.imageurl !== '') ? profile.imageurl : 'avatar.png' } alt='Lacrosse Player' height='200'/> }
+      { <img src={(profile.imageurl === '') ? profile.imageurl : 'avatar.png' } alt='Lacrosse Player' height='200'/> }
       <br />
       <input type='file' onChange={(e)=>{
         setImage(e.target.files[0])
-        uploadImage()
-        }}/>
+        }}/><input type='submit' value='Save Picture' onClick={uploadImage} />
       <h3>{userLoggedIn} </h3>
       <p>ID #{userId}</p>
       <form onSubmit={() => updateProfile(userId)} onChange={updateForm}>
